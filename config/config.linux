@@ -1,0 +1,52 @@
+#!/bin/bash
+
+echo " Defaults for Linux machine"
+
+# set the CC and CXX, usually it is not needed as cmake can detect it
+# set CC and CXX to mpicc and mpic++ when enable gasnet
+# CC=mpicc
+# CXX=mpic++
+
+# add flags if needed
+#CC_FLAGS=${CC_FLAGS+=""}
+#NVCC_FLAGS=${NVCC_FLAGS+=""}
+#LD_FLAGS=${LD_FLAGS+=""}
+
+#set install dir
+#INSTALL_DIR=
+
+# set build type
+BUILD_TYPE=Release
+
+# set CUDA Arch, replace xx with your GPU architecture
+#FF_CUDA_ARCH=xx
+
+# set CUDNN dir in case cmake cannot autodetect a path
+CUDNN_DIR=/usr/local/cuda
+
+# set CUDA dir in case cmake cannot autodetect a path
+#CUDA_DIR=/usr/local/cuda
+
+# enable Python
+FF_USE_PYTHON=ON
+
+# enable NCCL
+FF_USE_NCCL=OFF
+
+# enable GASNet
+FF_USE_GASNET=OFF
+
+# select GASNET conduit
+FF_GASNET_CONDUIT=ibv
+
+# build C++ examples
+FF_BUILD_ALL_EXAMPLES=OFF
+
+# enable avx2
+FF_USE_AVX2=OFF
+
+# set MAX_DIM
+FF_MAX_DIM=4
+
+. $(dirname $0)/config.inc
+run_cmake $*
